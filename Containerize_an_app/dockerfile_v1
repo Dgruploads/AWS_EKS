@@ -1,0 +1,14 @@
+FROM ubuntu:latest
+RUN apt-get update -y
+RUN apt-get install openjdk-11-jdk wget maven -y
+RUN mkdir /usr/local/tomcat
+RUN wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.31/bin/apache-tomcat-10.1.31.tar.gz -O /tmp/tomcat.tar.gz
+RUN cd /tmp && tar xvfz /tmp/tomcat.tar.gz
+RUN cp -Rv /tmp/apache-tomcat-10.1.31/* /usr/local/tomcat/
+COPY ./app_code /tmp
+WORKDIR /tmp
+RUN mvn clean package
+RUN cp /tmp/target/hello-world-web-app.war /usr/local/tomcat/
+EXPOSE 8080
+ENTRYPOINT ["/usr/local/tomcat/bin/catalina.sh"]
+CMD ["run"]
