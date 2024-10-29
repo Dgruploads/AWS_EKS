@@ -1,0 +1,15 @@
+#stage_1: Build stage
+FROM maven as build
+WORKDIR /app
+COPY pom.xml .
+COPY src ./src
+RUN mvn clean package
+
+
+#Stage_2: Deploy stage
+FROM tomcat
+WORKDIR /usr/local/tomcat
+COPY --from=build /app/target/hello-world-web-app.war .
+EXPOSE 8080
+ENTRYPOINT ["/usr/local/tomcat/bin/catalina.sh"]
+CMD ["run"]
