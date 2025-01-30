@@ -6,4 +6,5 @@ You can get the latest instructions from here - https://minikube.sigs.k8s.io/doc
 * sudo apt install docker.io -y ####### install docker. This is what we will be using for virtualization. Needed by minikube
 * curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube_latest_amd64.deb ######## Get the latest version of minikube
 * sudo dpkg -i minikube_latest_amd64.deb ######## Install minikube
+* sudo chmod 777 /var/run/docker.sock ######## Set permissions for the docker socket
 * minikube start --driver=docker ######## Start the minikube and we are saying to use Docker for virtualization
