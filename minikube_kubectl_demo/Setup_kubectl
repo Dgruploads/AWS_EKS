@@ -1,0 +1,7 @@
+###############################################################################################################
+You can get the instructions from here as well - https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/
+###############################################################################################################
+
+* curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" ###### Get the latest kubectl files
+* sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl ###### Install kubectl
+* kubectl version --client ###### Validate kubectl installation
