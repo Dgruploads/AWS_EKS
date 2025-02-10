@@ -1,0 +1,28 @@
+##### Please run the below commands before you start running the code. If not, the app will not work as exptected. #####
+##### Install node.js #####
+curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+sudo yum install -y nodejs
+
+##### Install dependencies ##### 
+##### Navigate to the products directory and run the below command #####
+npm install
+
+##### Navigate to the orders directory and run the below command #####
+npm install
+
+##### Start the products service #####
+npm start
+
+##### Start the orders service #####
+npm start
+
+#### Test your services #####
+http://<PUBLIC_IP_ADDRESS:3001/products
+http://<PUBLIC_IP_ADDRESS:3002/orders
+
+##### Create an order using CURL command #####
+curl -X POST http://<PUBLIC_IP_ADDRESS:3002/orders \
+-H "Content-Type: application/json" \
+-d '{"productId": 1, "quantity": 2}'
+
+http://<PUBLIC_IP_ADDRESS:3002/orders
