@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: products
+#  namespace: ecommerce
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: products
+      workload: ecommerce
+  template:
+    metadata:
+      labels:
+        app: products
+        workload: ecommerce
+    spec:
+      containers:
+      - name: products
+        image: 528757830112.dkr.ecr.ap-south-1.amazonaws.com/product
+        ports:
+        - containerPort: 3001
