@@ -1,21 +1,12 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Service
 metadata:
-  name: orders
+  name: orders-service
 spec:
-  replicas: 2
   selector:
-    matchLabels:
-      app: orders
-      workload: ecommerce
-  template:
-    metadata:
-      labels:
-        app: orders
-        workload: ecommerce
-    spec:
-      containers:
-      - name: orders
-        image: 528757830112.dkr.ecr.ap-south-1.amazonaws.com/order
-        ports:
-        - containerPort: 3002
+    app: orders
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 3002
+    targetPort: 3002
